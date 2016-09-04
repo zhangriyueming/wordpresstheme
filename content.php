@@ -23,6 +23,17 @@
 			else :
 				the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
 			endif;
+$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+
+		$time_string = sprintf( $time_string,
+			esc_attr( get_the_date( 'c' ) ),
+			get_the_date()
+		);
+
+$categories_list = get_the_category_list( _x( ' ', 'Used between list items', 'twentyfifteen' ) );
+$tags_list = get_the_tag_list('', _x( ' ', 'Used between list items, there is a space after the comma.', 'twentyfifteen' ) );
+
+			printf('<span class="my-posted-on">%1$s<br>%2$s %3$s</span>', $time_string, $categories_list, $tags_list);
 		?>
 	</header><!-- .entry-header -->
 
